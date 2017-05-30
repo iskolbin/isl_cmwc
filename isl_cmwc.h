@@ -47,9 +47,8 @@ ISLCMWC_DEF uint32_t islcmwc_rand( islcmwc_state *self );
 #endif
 
 void islcmwc_srand( islcmwc_state *self, uint32_t seed ) {
-	int i;
 	uint32_t s = seed;
-	for ( int i = 0; i < 4096; i++) {
+	for ( int i = 0; i < 4096; i++ ) {
 		self->Q[i] = s = (s * 1103515245) + 12345; /* glibc LCG */
 	}
 	self->c = ((s * 1103515245) + 12345) % 809430660;
@@ -67,7 +66,7 @@ uint32_t islcmwc_rand( islcmwc_state *self ) {
 		self->c++;
 	}
 
-	if( x + 1 == 0) {
+	if( x + 1 == 0 ) {
 		self->c++;
 		x=0;
 	}
